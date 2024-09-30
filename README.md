@@ -25,19 +25,6 @@ Moving forward, this `README.md` will be updated weekly with:
 - **Outcomes** from the learning process.
 - Possibly, **social media posts** reflecting the weekly outcomes.
 
-Good Luck and Happy Learning! 🎉
-
-## 🔗 Important Links & Organization:
-- **[Files for ml-zoomcamp cohort 2022](#)**
-- **[Syllabus and deadlines](#)**
-
-## 🗃️ Organization of this Repository
-- **`data/`**: Collection of datasets used throughout the ZoomCamp.
-- **`images/`**: Snapshots and visual aids created during weekly note preparation.
-- **`ipynb/`**: All the Jupyter notebooks created for different weeks.
-- **`models/`**: Machine Learning models developed during the course.
-- **`notes/`**: Readme files that contain notes from different weeks of the ZoomCamp.
-- **`src/`**: Python scripts used or developed across the course.
 
 ## 🗓️ Weekly Learning Progress
 
