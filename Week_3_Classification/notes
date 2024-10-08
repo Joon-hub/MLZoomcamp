@@ -1,74 +1,92 @@
-# Download the Telco Customer Churn dataset using curl and save it as a CSV file.
-!curl -O https://raw.githubusercontent.com/alexeygrigorev/mlbookcamp-code/master/chapter-03-churn-prediction/WA_Fn-UseC_-Telco-Customer-Churn.csv
+# Telco Customer Churn Analysis
+## Data Preparation
+bash
+# Download the dataset
+curl -O https://raw.githubusercontent.com/alexeygrigorev/mlbookcamp-code/master/chapter-03-churn-prediction/WA_Fn-UseC_-Telco-Customer-Churn.csv
 
-# Convert all column names to lowercase and replace spaces with underscores for consistency.
+## Data Preprocessing
+python
+# Standardize column names
 df.columns = df.columns.str.lower().str.replace(' ', '_')
 
-# Convert the 'totalcharges' column to numeric type. Any errors (like strings) will be converted to NaN.
+# Convert 'totalcharges' to numeric
 df.totalcharges = pd.to_numeric(df.totalcharges, errors='coerce')
 
-# Change the 'seniorcitizen' column type to string for better handling of categorical data.
+# Convert 'seniorcitizen' to string
 df.seniorcitizen = df.seniorcitizen.astype('str')
 
-# Identify categorical and numerical columns based on their data types.
+# Identify column types
 categorical = (df.dtypes == 'object')
 numerical = (df.dtypes != 'object')
 
-# Print the categorical and numerical column names for reference.
-print('categorical_columns', df.columns[categorical], '\n')
-print('numerical_columns', df.columns[numerical])
+print('Categorical columns:', df.columns[categorical], '\n')
+print('Numerical columns:', df.columns[numerical])
 
-# Standardize categorical columns by converting them to lowercase and replacing spaces with underscores.
+# Standardize categorical columns
 for col in df.columns[categorical]:
     df[col] = df[col].str.lower().str.replace(' ', '_')
-    # Print unique values in the standardized categorical columns for verification.
-    print(df[col].unique())
+    print(f"Unique values in {col}:", df[col].unique())
 
-# Split the dataset into training and test sets, reserving 20% for testing.
+## Data Splitting
+python
+# Split into train and test sets
 df_full_train, df_test = train_test_split(df, test_size=0.20, random_state=1)
 
-# Further split the training set into training and validation sets, with 25% of the training data for validation.
+# Split train set into train and validation
 df_train, df_val = train_test_split(df_full_train, test_size=0.25, random_state=1)
 
-# Print the sizes of the training, validation, and test datasets for clarity.
-print(len(df_train), len(df_val), len(df_test))
+print(f"Dataset sizes: Train: {len(df_train)}, Validation: {len(df_val)}, Test: {len(df_test)}")
 
-# Extract categorical columns excluding the target variable 'churn'.
+## Feature Analysis
+python
+# Extract categorical and numerical columns
 categorical = df.columns[categorical].drop('churn').tolist()
-# Extract numerical columns for further analysis.
 numerical = df.columns[numerical].tolist()
 
-# Calculate the churn rate for females in the full training dataset.
-df_full_train[df_full_train.gender == 'female'].churn.mean()
+# Calculate churn rate for females
+female_churn_rate = df_full_train[df_full_train.gender == 'female'].churn.mean()
+print(f"Churn rate for females: {female_churn_rate:.2f}")
 
-# Analyze the churn rates for different categorical groups.
-for col in df_full_train[categorical]:
-    df_group = df_full_train.groupby(col).churn.agg(['mean'])  # Group by each categorical column and calculate mean churn.
-    df_group['diff'] = df_group['mean'] - global_churn_rate  # Calculate the difference from the global churn rate.
-    df_group['risk'] = df_group['mean'] / global_churn_rate  # Calculate risk based on churn rates.
-    display(df_group)  # Display the grouped DataFrame for insights.
+# Analyze churn rates for categorical groups
+for col in categorical:
+    df_group = df_full_train.groupby(col).churn.agg(['mean'])
+    df_group['diff'] = df_group['mean'] - global_churn_rate
+    df_group['risk'] = df_group['mean'] / global_churn_rate
+    display(df_group)
 
-# Import mutual_info_score from sklearn for feature selection.
+## Feature Selection
+python
 from sklearn.metrics import mutual_info_score
 
-# Function to calculate mutual information score with respect to the churn target.
 def mutual_info_churn_score(series):
     return mutual_info_score(series, df_full_train.churn)
 
-# Calculate and print the mutual information score for each column to assess feature importance.
+# Calculate mutual information scores
 for col in df.columns:
-    ix = mutual_info_churn_score(df_full_train[col])
-    print(col, ix.round(3))
+    mi_score = mutual_info_churn_score(df_full_train[col])
+    print(f"{col}: {mi_score:.3f}")
 
-# Compute the absolute correlation of numerical features with the churn target and sort by strength.
-df_full_train[numerical].corrwith(df.churn).abs().sort_values(ascending=False)
+# Compute correlation with churn for numerical features
+correlation = df_full_train[numerical].corrwith(df.churn).abs().sort_values(ascending=False)
+print("Correlation with churn:")
+print(correlation)
 
-# Initialize a Logistic Regression model for binary classification of churn.
+## Model Training and Prediction
+python
+from sklearn.linear_model import LogisticRegression
+
+# Initialize and train the model
 model = LogisticRegression(solver='liblinear', random_state=1)
-
-# Fit the model on the training data (X_train and y_train need to be defined previously).
 model.fit(X_train, y_train)
 
-# Make predictions on the validation and test sets.
+# Make predictions
 y_pred_val = model.predict(X_val)
 y_pred = model.predict(X_test)
+
+- This beautifully formatted markdown file includes:
+- Clear section headers
+- Code blocks with syntax highlighting
+- Consistent formatting and indentation
+- Informative comments
+- Proper spacing for readability
+- The structure now flows logically from data preparation to model prediction, making it easier to understand and follow the analysis process1.
