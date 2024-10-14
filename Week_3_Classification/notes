@@ -1,0 +1,92 @@
+# Telco Customer Churn Analysis
+## Data Preparation
+bash
+# Download the dataset
+curl -O https://raw.githubusercontent.com/alexeygrigorev/mlbookcamp-code/master/chapter-03-churn-prediction/WA_Fn-UseC_-Telco-Customer-Churn.csv
+
+## Data Preprocessing
+python
+# Standardize column names
+df.columns = df.columns.str.lower().str.replace(' ', '_')
+
+# Convert 'totalcharges' to numeric
+df.totalcharges = pd.to_numeric(df.totalcharges, errors='coerce')
+
+# Convert 'seniorcitizen' to string
+df.seniorcitizen = df.seniorcitizen.astype('str')
+
+# Identify column types
+categorical = (df.dtypes == 'object')
+numerical = (df.dtypes != 'object')
+
+print('Categorical columns:', df.columns[categorical], '\n')
+print('Numerical columns:', df.columns[numerical])
+
+# Standardize categorical columns
+for col in df.columns[categorical]:
+    df[col] = df[col].str.lower().str.replace(' ', '_')
+    print(f"Unique values in {col}:", df[col].unique())
+
+## Data Splitting
+python
+# Split into train and test sets
+df_full_train, df_test = train_test_split(df, test_size=0.20, random_state=1)
+
+# Split train set into train and validation
+df_train, df_val = train_test_split(df_full_train, test_size=0.25, random_state=1)
+
+print(f"Dataset sizes: Train: {len(df_train)}, Validation: {len(df_val)}, Test: {len(df_test)}")
+
+## Feature Analysis
+python
+# Extract categorical and numerical columns
+categorical = df.columns[categorical].drop('churn').tolist()
+numerical = df.columns[numerical].tolist()
+
+# Calculate churn rate for females
+female_churn_rate = df_full_train[df_full_train.gender == 'female'].churn.mean()
+print(f"Churn rate for females: {female_churn_rate:.2f}")
+
+# Analyze churn rates for categorical groups
+for col in categorical:
+    df_group = df_full_train.groupby(col).churn.agg(['mean'])
+    df_group['diff'] = df_group['mean'] - global_churn_rate
+    df_group['risk'] = df_group['mean'] / global_churn_rate
+    display(df_group)
+
+## Feature Selection
+python
+from sklearn.metrics import mutual_info_score
+
+def mutual_info_churn_score(series):
+    return mutual_info_score(series, df_full_train.churn)
+
+# Calculate mutual information scores
+for col in df.columns:
+    mi_score = mutual_info_churn_score(df_full_train[col])
+    print(f"{col}: {mi_score:.3f}")
+
+# Compute correlation with churn for numerical features
+correlation = df_full_train[numerical].corrwith(df.churn).abs().sort_values(ascending=False)
+print("Correlation with churn:")
+print(correlation)
+
+## Model Training and Prediction
+python
+from sklearn.linear_model import LogisticRegression
+
+# Initialize and train the model
+model = LogisticRegression(solver='liblinear', random_state=1)
+model.fit(X_train, y_train)
+
+# Make predictions
+y_pred_val = model.predict(X_val)
+y_pred = model.predict(X_test)
+
+- This beautifully formatted markdown file includes:
+- Clear section headers
+- Code blocks with syntax highlighting
+- Consistent formatting and indentation
+- Informative comments
+- Proper spacing for readability
+- The structure now flows logically from data preparation to model prediction, making it easier to understand and follow the analysis process1.
