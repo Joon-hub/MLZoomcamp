@@ -6,10 +6,11 @@ name = "pypi"
 [packages]
 markupsafe = "*"
 flask = "*"
-waitress = "*"
 scikit-learn = "*"
 pandas = "*"
 numpy = "*"
+requests = "*"
+waitress = "*"
 
 [dev-packages]
 
