@@ -2,8 +2,12 @@ import pickle
 import os
 import requests
 from flask import Flask, request, jsonify
+import time 
+import logging
 
 app = Flask('churn')
+
+model_loaded = None  # Global variable to hold the loaded model and dv
 
 # Function to load the model and dictionary vectorizer
 def load_model(C, n_splits):
@@ -56,10 +60,11 @@ def predict():
 
     except Exception as e:
         # General exception handling to catch and return errors
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": f"Failed to connect to /predict endpoint: {e}"}), 500
 
 # Test endpoint to send a request to the predict endpoint
-@app.route('/test', methods=['POST'])
+@app.route('/test', methods=['GET', 'POST'])
+
 def test():
     # URL for the local API prediction endpoint
     url = 'http://localhost:5001/predict'
@@ -89,8 +94,26 @@ def test():
     }
     
     # Make POST request and return response
-    response = requests.post(url, json=customer)
-    return jsonify(response.json())
+    if request.method == "POST":
+        response = requests.post(url, json=customer)
+        start_time = time.time()
+        logging.info("Sending request to URL...")
+        response = requests.post(url, json=customer)
+        elapsed_time = time.time() - start_time
+        logging.info(f"Request took {elapsed_time} seconds.")
+        return jsonify(response.json())
+    else:
+        return {"message": "Send a POST request with customer data."}, 200
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5001)
+    app.run(debug=True, host='0.0.0.0', port=5001) # needed when we run flask
+    # app.run()
+    
+# Terminal commands 
+# waitress-serve --host=0.0.0.0 --port=5001 predict:app (production environment)
+# curl -X POST http://127.0.0.1:5001/test
+    
+# check which server are running
+# lsof -i :5001  
+# kill server with pid 
+# kill -9 481 
