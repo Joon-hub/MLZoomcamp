@@ -7,16 +7,23 @@ from sklearn.metrics import roc_auc_score
 from sklearn.linear_model import LogisticRegression
 import pickle
 import warnings
+import argparse
 
 # Suppress warnings for cleaner output
 warnings.filterwarnings('ignore')
 
+# adding parsers to add the parameters from command line arguments
+parser = argparse.ArgumentParser(description='Train a logistic regression model.')
+parser.add_argument('--C', type=float, default=1, help='Regularization strength (default: %(default)s)')
+parser.add_argument('--n_splits', type=int, default=5, help='Number of splits for K-Fold cross-validation (default: 5)')
+args = parser.parse_args()
+
 # Training parameters
-C = 1.0  # Regularization strength
-n_splits = 5  # Number of splits for K-Fold cross-validation
+C = args.C  # Regularization strength
+n_splits = args.n_splits  # Number of splits for K-Fold cross-validation
 
 # Load dataset
-df = pd.read_csv("WA_Fn-UseC_-Telco-Customer-Churn.csv")
+df = pd.read_csv("churn_dataset.csv")
 print(f'Dataset has been successfully loaded: {df.shape}\n')
 
 # Standardize column names: lowercase and replace spaces with underscores
@@ -80,7 +87,7 @@ def predict(df, dv, model):
     return y_pred
 
 # K-Fold Cross Validation
-print('Running K-Fold Cross Validation...\n')
+print(f'Running K-Fold Cross Validation with C = {C} and n_splits = {n_splits}\n')
 kfold = KFold(n_splits=n_splits, shuffle=True, random_state=1)
 scores = []
 
@@ -102,11 +109,11 @@ for train_idx, val_idx in kfold.split(df_full_train):
     scores.append(auc)
 
 # Print mean and standard deviation of AUC scores
-print(f'C: {C}, Mean AUC: {np.mean(scores)}, AUC Standard Deviation: {np.std(scores)}\n')
-print(f'AUC Scores: {scores} \n')
+print(f'C: {C}, Mean AUC on {n_splits} fold is: {np.mean(scores)}, AUC Standard Deviation: {np.std(scores)}\n')
+print(f'AUC Scores for each fold: {scores} \n')
 
 # Export the trained model
-output_file = f'model_C={C}.bin'
+output_file = f'model_C={C}_splits={n_splits}.bin'
 with open(output_file, 'wb') as f_out:
     pickle.dump((dv, model), f_out)
 print(f'Model has been saved as: {output_file}\n')
