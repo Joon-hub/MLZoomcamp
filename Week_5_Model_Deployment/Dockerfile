@@ -1,17 +1,24 @@
-FROM python:3.8.12-slim
+# Use a lightweight Python image as the base
+FROM python:3.11
 
-# Install dependencies
-COPY requirements.txt ./
-RUN pip install -r requirements.txt
-
-# Set the working directory
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the application code
-COPY ["predict.py", "model_C=1.0.bin", "./"]
+# Install pipenv to manage dependencies
+RUN pip install --no-cache-dir pipenv
+
+# Copy the Pipfile and Pipfile.lock (if exists) to install dependencies
+COPY Pipfile ./
+COPY Pipfile.lock ./
+
+# Install dependencies using pipenv
+RUN pipenv install --deploy --ignore-pipfile
+
+# Copy the application code into the container
+COPY predict.py ./
 
 # Expose the application port
-EXPOSE 9696
+EXPOSE 5001
 
-# Start the application
-ENTRYPOINT ["gunicorn", "--bind=0.0.0.0:9696", "predict:app"]
+# Command to run the application using waitress
+ENTRYPOINT ["waitress-serve", "--host=0.0.0.0", "--port=5001", "predict:app"]

@@ -1,5 +1,5 @@
 numpy
 scikit-learn
 flask
-gunicorn
+waitress
 markupsafe
