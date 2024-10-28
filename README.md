@@ -1,125 +1,143 @@
-# 💡 Machine Learning Zoomcamp 💡
-
-This repository was created while attending the **ML ZoomCamp** organized by [Alexey Grigorev](https://github.com/alexeygrigorev) and team. The ZoomCamp spans 14 modules and covers a period of approximately 4 months.
+# Machine Learning Zoomcamp
 
 ## Table of Contents
-- [Open Ended Learning](#open-ended-learning)
-- [Important Links & Organization](#important-links--organization)
-- [Weekly Learning Progress](#weekly-learning-progress)
-  - [Week-1](#week-1)
-  - [Week-2](#week-2)
-  - [Week-3](#week-3)
-  - [Week-4](#week-4)
-  - [Week-5](#week-5)
-  - [Week-6](#week-6)
-  - [Week-7](#week-7)
-  - [Midterm Project](#midterm-project)
-  - [Week-8](#week-8)
-  - [Week-9](#week-9)
-- [Targeted Open Learning](#targeted-open-learning)
+1. [Introduction](#introduction)
+2. [Repository Structure](#repository-structure)
+3. [Weekly Breakdown](#weekly-breakdown)
+4. [Midterm Project](#midterm-project)
+5. [Technologies and Tools](#technologies-and-tools)
+6. [Getting Started](#getting-started)
+7. [Contributing](#contributing)
+8. [License](#license)
 
-## Open Ended Learning
-Moving forward, this `README.md` will be updated weekly with:
-- An **Overview** of the week's learning.
-- **Notes** prepared during the week.
-- **Outcomes** from the learning process.
-- Possibly, **social media posts** reflecting the weekly outcomes.
+## Introduction
+
+Welcome to the Machine Learning Zoomcamp repository! This comprehensive collection of materials and projects is designed to guide you through the exciting world of machine learning, from fundamental concepts to advanced techniques and real-world applications.
+
+This repository serves as a practical resource for anyone looking to deepen their understanding of machine learning, offering hands-on experience with various algorithms, model evaluation techniques, and deployment strategies.
+
+## Repository Structure
+
+The repository is organized into weekly modules, each focusing on specific aspects of machine learning:
+
+Each directory contains relevant code, datasets, and documentation specific to that week's topic.
+
+## Weekly Breakdown
+
+### Week 2: Regression
+- Introduction to regression analysis
+- Linear regression implementation
+- Polynomial regression and feature engineering
+- Model evaluation metrics for regression
+
+### Week 3: Classification
+- Binary and multi-class classification
+- Logistic regression
+- Support Vector Machines (SVM)
+- K-Nearest Neighbors (KNN)
+
+### Week 4: Evaluation
+- Confusion matrix and classification metrics
+- ROC curves and AUC
+- Cross-validation techniques
+- Handling imbalanced datasets
+
+### Week 5: Model Deployment
+- Flask API development for ML models
+- Docker containerization
+- Cloud deployment basics
+- API testing and documentation
+
+### Week 6: Decision Trees
+- Decision tree algorithms
+- Information gain and entropy
+- Pruning techniques
+- Visualizing decision trees
+
+### Week 7: Ensemble Learning
+- Random Forests
+- Gradient Boosting Machines
+- XGBoost and LightGBM
+- Stacking and blending models
+
+### Week 8: Deep Learning
+- Neural network fundamentals
+- TensorFlow and Keras introduction
+- Convolutional Neural Networks (CNN)
+- Transfer learning
+
+### Week 9: Serverless
+- Serverless computing concepts
+- AWS Lambda functions
+- Serverless deployment of ML models
+- Performance optimization for serverless
+
+### Week 10: Kubernetes
+- Kubernetes architecture
+- Deploying ML models on Kubernetes
+- Scaling and managing ML workloads
+- Monitoring and logging in Kubernetes
+
+## Midterm Project
+
+The Midterm Project directory contains a comprehensive machine learning project that integrates concepts from the first half of the course. It includes:
+
+- Problem statement and dataset description
+- Exploratory Data Analysis (EDA)
+- Feature engineering and preprocessing
+- Model selection and training
+- Evaluation and interpretation of results
+- Deployment strategy
+
+## Technologies and Tools
+
+This course utilizes a wide range of technologies and tools, including:
+
+- **Programming Language**: Python 3.x
+- **Data Manipulation**: Pandas, NumPy
+- **Machine Learning**: Scikit-learn, XGBoost
+- **Deep Learning**: TensorFlow, Keras, PyTorch
+- **Visualization**: Matplotlib, Seaborn
+- **Deployment**: Flask, Docker, Kubernetes
+- **Cloud Services**: AWS (Lambda, EC2)
+- **Version Control**: Git
+
+## Getting Started
+
+To get started with this repository:
+
+1. Clone the repository:
+   git clone https://github.com/Joon-hub/MLZoomcamp.git
+
+2. Set up a Python virtual environment:
+  python -m venv mlzoomcamp-env
+  source mlzoomcamp-env/bin/activate # On Windows use mlzoomcamp-env\Scripts\activate
+   
+3. Install the required dependencies:
+   pip install -r requirements.txt
 
 
-## 🗓️ Weekly Learning Progress
+4. Navigate to the week you're interested in and follow the instructions in the respective README files or Jupyter notebooks.
 
-### Week-1
-**Topic**: Introduction to Machine Learning  
-**Notes**: [Week-1 Notes](#)  
-**Outcomes**:  
-- Introduction to ML Terminology  
-- Rule-based vs. Machine Learning  
-- Supervised Learning, CRISP-DM, Model Selection Steps  
-- Review of Linear Algebra and Environment Setup  
-**Media**: [Week-1 Post](#)
+## Contributing
 
-### Week-2
-**Topic**: Machine Learning for Regression  
-**Notes**: [Week-2 Notes](#)  
-**Outcomes**:  
-- Linear Regression  
-- Car Price Prediction Model  
-- House Price Prediction Model  
-- Regularization and Data Shuffling  
-**Media**: [Week-2 Post](#)
+Contributions to the MLZoomcamp repository are welcome! If you have suggestions for improvements or want to add new features:
 
-### Week-3
-**Topic**: Machine Learning for Classification  
-**Notes**: [Week-3 Notes](#)  
-**Outcomes**:  
-- Binary Classification  
-- Feature Importance  
-- One-Hot Encoding  
-- Output of Logistic Regression - Probability  
-**Media**: [Week-3 Post](#)
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-### Week-4
-**Topic**: Evaluation Metrics for Classification  
-**Notes**: [Week-4 Notes](#)  
-**Outcomes**:  
-- Metrics for Binary Classification  
-- Accuracy, Precision, Recall, F1-Score, ROC, and ROC-AUC  
-- Class Imbalance Solutions  
-- K-Fold Cross Validation  
-**Media**: [Week-4 Post](#)
+Please ensure your code adheres to the existing style and includes appropriate tests and documentation.
 
-### Week-5
-**Topic**: Deploying Machine Learning Models  
-**Notes**: [Week-5 Notes](#)  
-**Outcomes**:  
-- Saving and Loading ML Models  
-- Converting Jupyter Notebooks into Python Scripts  
-- Managing Environment Dependencies  
-- Python Tools: Pipenv, Virtualenv, Conda  
-- Docker for Environment Setup  
-**Media**: [Week-5 Post](#)
+## License
 
-### Week-6
-**Topic**: Decision Trees and Ensemble Learning  
-**Notes**: [Week-6 Notes](#)  
-**Outcomes**:  
-- Decision Trees  
-- Controlling Overfitting in DTs  
-- Random Forests and Their Diversity  
-- Gradient Boosting and XGBoost  
-**Media**: [Week-6 Post](#), [Week-6 Post-2](#), [Week-6 Post-3](#), [Week-6 Post-4](#)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-### Week-7
-**Topic**: BentoML for Production  
-**Notes**: [Week-7 Notes](#)  
-**Outcomes**:  
-- Deploying ML Models using BentoML  
-**Media**: [Week-7 Post](#)
+---
 
-### Midterm Project
-**Topic**: Midterm Project  
-**Link to Project Folder**: [Week-Midterm Project](#)  
-**Outcomes**:  
-- End-to-End ML Project Implementation  
-**Media**: [Midterm Project Post](#)
+For any questions or issues, please open an issue in the GitHub repository or contact the repository maintainer.
 
-### Week-8
-**Topic**: Neural Networks and Deep Learning  
-**Notes**: [Week-8 Notes](#)  
-**Outcomes**:  
-- Pre-Trained Models  
-- Neural Network Layers  
-- Learning Rate, Dropout, and Checkpoints  
-**Media**: [Week-8 Post-1](#), [Week-8 Post-2](#)
-
-### Week-9
-**Topic**: Serverless Deep Learning  
-**Notes**: [Week-9 Notes](#)  
-**Outcomes**:  
-- AWS Lambda for Deep Learning  
-- TensorFlow Lite and Keras  
-- Docker and API Gateway  
-**Media**: [Week-9 Post-1](#)
-
-## 📖 Targeted Open Learning
-This section will be regularly updated with a summary of my progress and key insights gained through the open-ended learning strategy. Stay tuned for weekly updates!
+Happy learning!
+5. 
