@@ -1,143 +1,88 @@
-# Machine Learning Zoomcamp
+# Machine Learning Zoomcamp Journey
 
-## Table of Contents
-1. [Introduction](#introduction)
-2. [Repository Structure](#repository-structure)
-3. [Weekly Breakdown](#weekly-breakdown)
-4. [Midterm Project](#midterm-project)
-5. [Technologies and Tools](#technologies-and-tools)
-6. [Getting Started](#getting-started)
-7. [Contributing](#contributing)
-8. [License](#license)
+## About Me
+Hi there! 👋 I'm a student passionate about machine learning and data science. This repository documents my learning journey through the Machine Learning Zoomcamp, where I've gained hands-on experience with various ML concepts and deployment technologies.
 
-## Introduction
+## Repository Overview
+[![Joon-hub's GitHub Stats](https://github-readme-stats.vercel.app/api?username=Joon-hub&show_icons=true&theme=radical)](https://github.com/Joon-hub/MLZoomcamp)
 
-Welcome to the Machine Learning Zoomcamp repository! This comprehensive collection of materials and projects is designed to guide you through the exciting world of machine learning, from fundamental concepts to advanced techniques and real-world applications.
+## Projects and Weekly Progress
 
-This repository serves as a practical resource for anyone looking to deepen their understanding of machine learning, offering hands-on experience with various algorithms, model evaluation techniques, and deployment strategies.
+### [Week 1: Introduction](https://github.com/Joon-hub/MLZoomcamp/tree/main/week1)
+- Environment setup and basic tools
+- Python foundations for ML
+- NumPy and Pandas introduction
 
-## Repository Structure
-
-The repository is organized into weekly modules, each focusing on specific aspects of machine learning:
-
-Each directory contains relevant code, datasets, and documentation specific to that week's topic.
-
-## Weekly Breakdown
-
-### Week 2: Regression
-- Introduction to regression analysis
+### [Week 2: Regression Analysis](https://github.com/Joon-hub/MLZoomcamp/tree/main/week2)
 - Linear regression implementation
-- Polynomial regression and feature engineering
-- Model evaluation metrics for regression
+- Feature engineering techniques
+- Model evaluation metrics
+- [Homework](https://github.com/Joon-hub/MLZoomcamp/tree/main/week2/homework)
 
-### Week 3: Classification
-- Binary and multi-class classification
+### [Week 3: Classification](https://github.com/Joon-hub/MLZoomcamp/tree/main/week3)
 - Logistic regression
-- Support Vector Machines (SVM)
-- K-Nearest Neighbors (KNN)
+- Classification metrics
+- Model deployment basics
+- [Homework](https://github.com/Joon-hub/MLZoomcamp/tree/main/week3/homework)
 
-### Week 4: Evaluation
-- Confusion matrix and classification metrics
-- ROC curves and AUC
+### [Week 4: Model Evaluation](https://github.com/Joon-hub/MLZoomcamp/tree/main/week4)
+- Classification metrics deep dive
 - Cross-validation techniques
-- Handling imbalanced datasets
+- [Homework](https://github.com/Joon-hub/MLZoomcamp/tree/main/week4/homework)
 
-### Week 5: Model Deployment
-- Flask API development for ML models
+### [Week 5: Model Deployment](https://github.com/Joon-hub/MLZoomcamp/tree/main/week5)
+- Flask API development
 - Docker containerization
-- Cloud deployment basics
-- API testing and documentation
+- [Homework](https://github.com/Joon-hub/MLZoomcamp/tree/main/week5/homework)
 
-### Week 6: Decision Trees
+### [Week 6: Decision Trees](https://github.com/Joon-hub/MLZoomcamp/tree/main/week6)
 - Decision tree algorithms
-- Information gain and entropy
-- Pruning techniques
-- Visualizing decision trees
+- Random Forest implementation
+- [Homework](https://github.com/Joon-hub/MLZoomcamp/tree/main/week6/homework)
 
-### Week 7: Ensemble Learning
+### [Week 7: Ensemble Learning](https://github.com/Joon-hub/MLZoomcamp/tree/main/week7)
 - Random Forests
-- Gradient Boosting Machines
-- XGBoost and LightGBM
-- Stacking and blending models
+- Gradient Boosting
+- XGBoost implementation
+- [Homework](https://github.com/Joon-hub/MLZoomcamp/tree/main/week7/homework)
 
-### Week 8: Deep Learning
-- Neural network fundamentals
-- TensorFlow and Keras introduction
-- Convolutional Neural Networks (CNN)
-- Transfer learning
+### [Week 8: Deep Learning](https://github.com/Joon-hub/MLZoomcamp/tree/main/week8)
+- Neural Networks with TensorFlow/Keras
+- CNN implementations
+- [Homework](https://github.com/Joon-hub/MLZoomcamp/tree/main/week8/homework)
 
-### Week 9: Serverless
-- Serverless computing concepts
-- AWS Lambda functions
-- Serverless deployment of ML models
-- Performance optimization for serverless
+### [Week 9: Serverless](https://github.com/Joon-hub/MLZoomcamp/tree/main/week9)
+- AWS Lambda deployment
+- Serverless functions
+- [Homework](https://github.com/Joon-hub/MLZoomcamp/tree/main/week9/homework)
 
-### Week 10: Kubernetes
-- Kubernetes architecture
-- Deploying ML models on Kubernetes
-- Scaling and managing ML workloads
-- Monitoring and logging in Kubernetes
+### [Week 10: Kubernetes](https://github.com/Joon-hub/MLZoomcamp/tree/main/week10)
+- Kubernetes deployment
+- Model serving at scale
+- [Homework](https://github.com/Joon-hub/MLZoomcamp/tree/main/week10/homework)
 
-## Midterm Project
-
-The Midterm Project directory contains a comprehensive machine learning project that integrates concepts from the first half of the course. It includes:
-
-- Problem statement and dataset description
-- Exploratory Data Analysis (EDA)
-- Feature engineering and preprocessing
-- Model selection and training
-- Evaluation and interpretation of results
-- Deployment strategy
-
-## Technologies and Tools
-
-This course utilizes a wide range of technologies and tools, including:
-
-- **Programming Language**: Python 3.x
-- **Data Manipulation**: Pandas, NumPy
-- **Machine Learning**: Scikit-learn, XGBoost
-- **Deep Learning**: TensorFlow, Keras, PyTorch
-- **Visualization**: Matplotlib, Seaborn
-- **Deployment**: Flask, Docker, Kubernetes
-- **Cloud Services**: AWS (Lambda, EC2)
-- **Version Control**: Git
+## Skills Acquired
+- **Programming**: Python, Jupyter Notebooks
+- **ML Libraries**: 
+  - Scikit-learn
+  - TensorFlow
+  - XGBoost
+  - Pandas & NumPy
+- **Deployment Tools**: 
+  - Docker
+  - Flask
+  - AWS Lambda
+  - Kubernetes
 
 ## Getting Started
 
-To get started with this repository:
+```bash
+# Clone this repository
+git clone https://github.com/Joon-hub/MLZoomcamp.git
 
-1. Clone the repository:
-   git clone https://github.com/Joon-hub/MLZoomcamp.git
+# Set up Python environment
+python -m venv mlzoomcamp-env
+source mlzoomcamp-env/bin/activate  # Windows: mlzoomcamp-env\Scripts\activate
 
-2. Set up a Python virtual environment:
-  python -m venv mlzoomcamp-env
-  source mlzoomcamp-env/bin/activate # On Windows use mlzoomcamp-env\Scripts\activate
-   
-3. Install the required dependencies:
-   pip install -r requirements.txt
-
-
-4. Navigate to the week you're interested in and follow the instructions in the respective README files or Jupyter notebooks.
-
-## Contributing
-
-Contributions to the MLZoomcamp repository are welcome! If you have suggestions for improvements or want to add new features:
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-Please ensure your code adheres to the existing style and includes appropriate tests and documentation.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-For any questions or issues, please open an issue in the GitHub repository or contact the repository maintainer.
-
-Happy learning!
-5. 
+# Install dependencies
+pip install -r requirements.txt
