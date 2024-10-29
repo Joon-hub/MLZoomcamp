@@ -1,0 +1,19 @@
+{
+    "AWSEBDockerrunVersion": "1",
+    "Image": {
+      "Name": "my-ai-blog",
+      "Update": "true"
+    },
+    "Ports": [
+      {
+        "ContainerPort": 3500,
+        "HostPort": 80
+      }
+    ],
+    "Volumes": [
+      {
+        "HostDirectory": "/dbData",
+        "ContainerDirectory": "/app/db"
+      }
+    ]
+  }
